@@ -14,7 +14,7 @@ red = (255,0,0)
 bird_height = 36
 
 gameDisplay = pygame.display.set_mode((display_width,display_height))
-pygame.display.set_caption('Bouncing Avian')
+pygame.display.set_caption('Bouncing Avian!')
 clock = pygame.time.Clock()
 
 birdImg = pygame.image.load('bird.png')
