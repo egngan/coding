@@ -14,7 +14,7 @@ red = (255,0,0)
 bird_height = 36
 
 gameDisplay = pygame.display.set_mode((display_width,display_height))
-pygame.display.set_caption('Bouncing Avian!')
+pygame.display.set_caption('Bouncing Avian')
 clock = pygame.time.Clock()
 
 birdImg = pygame.image.load('bird.png')
@@ -26,8 +26,8 @@ class Pole:
         self.y_gap = y_gap
         self.h_gap = h_gap
 
-    def move(self,x_pos):
-        self.x_pos = x_pos
+    def move(self,x_delta):
+        self.x_pos += x_delta
         
     def draw(self):
         h_gap2 = self.h_gap*0.5
@@ -84,7 +84,7 @@ def game_loop():
     y_acceleration = gravity
     lift = 0
 
-    pole = Pole(display_width*1.1,  random.randrange(int(h_pass * 0.5), int(display_height - h_pass * 0.5)), random.randrange(60, 150))
+    poles = [Pole(display_width*1.1,  random.randrange(int(h_pass * 0.5), int(display_height - h_pass * 0.5)), random.randrange(60, 150))]
 
     gameExit = False
     firstTime = True
@@ -108,8 +108,9 @@ def game_loop():
         y += y_velocity
         gameDisplay.fill(white)
         
-        pole.move(pole_x)
-        pole.draw()
+        for pole in poles: 
+            pole.move(x_velocity)
+            pole.draw()
         
         # # things(thingx, thingy, thingw, thingh, color)
         #things(thing_startx, y_pass, thing_width, h_pass, black)
@@ -118,7 +119,7 @@ def game_loop():
         if y > display_height - bird_height or y <= 0:
             crash()
 
-        pole_x += x_velocity
+        #pole_x += x_velocity
 
         #if thing_startx > display_height:
             #thing_startx = 0 - thing_height
