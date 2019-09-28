@@ -6,8 +6,8 @@
     "configurations": [
         
         {
-            "name": "Python Experimental: Terminal (integrated)",
-            "type": "pythonExperimental",
+            "name": "Python: Terminal (integrated)",
+            "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
